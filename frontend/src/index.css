@@ -1,0 +1,259 @@
+@import "./theme-vars.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================================================================================
+   TYPOGRAPHY SYSTEM - reusable classes instead of one-off inline font/size utilities
+   scattered across every page. Extends the existing font-display/font-body/font-handwritten
+   Tailwind families (tailwind.config.js) rather than replacing them; nothing that already
+   used those keeps working exactly as before.
+   ================================================================================== */
+@layer base {
+  :root {
+    --font-hero: "Script MT Bold", "Segoe Script", "Pacifico", cursive;
+    --font-brand: "Vivaldi", "Yellowtail", cursive;
+    --font-heading: "Copperplate Gothic Bold", "Copperplate", "Cinzel", serif;
+    --font-body: "Poppins", sans-serif;
+  }
+}
+
+@layer components {
+  /* A. Main hero heading ("Little Pieces of Art, Made Just for You.") - bold script, one
+     responsive clamp() so it scales smoothly rather than jumping between fixed breakpoint
+     sizes; comfortable tight-but-not-cramped line-height for a 2-line headline, normal
+     (non-stretched) letter-spacing, no text-shadow. clamp() bounds: ~34px at narrow mobile
+     widths up to ~72px at wide desktop, matching the requested desktop/tablet/mobile ranges. */
+  .hero-title {
+    font-family: var(--font-hero);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: normal;
+    font-size: clamp(2.125rem, 1.35rem + 3.3vw, 4.5rem);
+  }
+
+  /* B. "SubhRa Crafts" / "Handmade with Love" branding only - never the whole navbar. Sized
+     modestly so it stays clearly readable at navbar scale rather than "excessively large". */
+  .brand-title {
+    font-family: var(--font-brand);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* C. Section headings (Featured Categories, Sales & Offers, Customer Reviews, etc). Bold,
+     uppercase (matches the existing design's convention for these), slightly increased
+     letter-spacing for the engraved-caps look, comfortable 1.1-1.25 line-height for wrapped
+     titles. clamp() bounds roughly match the requested 22-30px mobile / 28-36px tablet /
+     32-44px desktop ranges. */
+  .section-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    font-size: clamp(1.375rem, 1.1rem + 1.1vw, 2.75rem);
+  }
+
+  /* D. Small eyebrow labels (EXPLORE, OUR STORY, SUBHRA CRAFTS - HANDMADE WITH LOVE) - a clean
+     complementary style, not Copperplate, since a heavy display face at this small a size
+     tends to hurt readability rather than help it. */
+  .section-eyebrow {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* H. Product titles - normal UI font, never the decorative hero script, medium/semibold
+     weight, comfortable line-height so long names wrap onto a second line without breaking
+     card layout instead of being forced onto one crushed line. */
+  .product-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  @apply font-body text-plum-dark bg-cream transition-colors duration-300;
+  /* A soft 4-5 color diagonal blend built from each theme's own palette vars - this is what
+     makes every theme (existing or newly added) automatically get a rich blended gradient
+     background with zero per-theme CSS: adding a new theme to theme-vars.css is enough.
+     Opacity is kept low and the base is the theme's own cream tone, so text contrast is
+     never at risk - this is inspiration from a gradient reference image, deliberately not a
+     literal copy of a dark/saturated background. */
+  background-image: linear-gradient(
+    135deg,
+    rgb(var(--color-blush) / 0.55) 0%,
+    rgb(var(--color-lavender) / 0.35) 25%,
+    rgb(var(--color-rose) / 0.18) 50%,
+    rgb(var(--color-gold) / 0.16) 75%,
+    rgb(var(--color-cream) / 1) 100%
+  );
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  font-family: theme("fontFamily.display");
+}
+
+::selection {
+  background: rgb(var(--color-lavender));
+  color: rgb(var(--color-plum));
+}
+
+/* floral divider signature element, echoing the logo's wreath motif */
+.floral-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: rgb(var(--color-gold));
+}
+.floral-divider::before,
+.floral-divider::after {
+  content: "";
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, transparent, rgb(var(--color-gold)));
+}
+.floral-divider::after {
+  background: linear-gradient(90deg, rgb(var(--color-gold)), transparent);
+}
+
+.btn-primary {
+  @apply bg-plum text-cream px-6 py-3 rounded-full font-body text-sm tracking-wide transition-all duration-300 hover:bg-plum-light hover:shadow-soft;
+}
+.btn-outline {
+  @apply border border-plum text-plum px-6 py-3 rounded-full font-body text-sm tracking-wide transition-all duration-300 hover:bg-plum hover:text-cream;
+}
+
+.card {
+  @apply bg-cream/80 backdrop-blur-sm rounded-xl2 shadow-card border border-blush/60;
+}
+
+/* Every text input/textarea/select in the app follows the active theme instead of being
+   hardcoded white - this is what previously made the search bar (and other fields) look like
+   a washed-out, mismatched "selected" box against colored themes. */
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  @apply bg-cream/80 border-blush text-plum-dark placeholder:text-plum-light/60;
+}
+
+/* Prevent the page scrolling underneath an open mobile drawer */
+body.drawer-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translate(-50%, -6px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero entrance - plays once per mount (not looping), larger offset + premium easing than the
+   generic fadeInUp above, used only for the staggered hero text elements on first paint. */
+@keyframes heroFadeInUp {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Decorative motion set (AnimatedDoodles.jsx) - subtle, slow, transform/opacity-only so they're
+   cheap even with several instances per page. All disabled by the prefers-reduced-motion rule
+   above (it overrides animation-duration on every element, including these). */
+@keyframes fallDrift {
+  0% { transform: translate(0, -10%) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translate(18px, 420%) rotate(200deg); opacity: 0; }
+}
+@keyframes floatRotate {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-14px) rotate(6deg); }
+}
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.45; }
+  50% { transform: translateY(-16px) scale(1.08); opacity: 0.7; }
+}
+@keyframes twinkle {
+  0%, 100% { transform: scale(0.7); opacity: 0.25; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+}
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes flutterDrift {
+  0%, 100% { transform: translate(0, 0) rotate(-4deg); }
+  50% { transform: translate(-10px, -12px) rotate(4deg); }
+}
+
+/* Floating Help button - a gentle "breathing" shadow pulse, not a jarring scale bounce. */
+@keyframes helpPulse {
+  0%, 100% { box-shadow: 0 4px 14px rgba(122, 47, 75, 0.25); }
+  50% { box-shadow: 0 4px 22px rgba(122, 47, 75, 0.45); }
+}
+
+/* Login page 3D bubbles - slow, gentle drift, never fast/bouncy. */
+@keyframes bubbleFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -18px); }
+}
+
+/* Used by components/NumberInput.jsx - hides the native up/down spinner arrows on a number
+   input. Purely cosmetic; the actual wheel-scroll-changes-the-value fix is the onWheel handler
+   in that component (CSS alone cannot prevent that in Chrome/Firefox). */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-spinner[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Used for horizontally-scrolling rows (e.g. Home.jsx's Featured Categories, up to 6 items in
+   one row that never wraps) where a visible scrollbar would look cluttered - the row is already
+   swipeable/draggable, so the scrollbar is redundant chrome, not a required affordance. */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

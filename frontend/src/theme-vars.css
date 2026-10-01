@@ -1,0 +1,167 @@
+:root {
+  --color-cream: 251 246 239;
+  --color-ivory: 247 239 228;
+  --color-blush: 243 220 225;
+  --color-rose: 217 143 163;
+  --color-lavender: 201 183 218;
+  --color-plum: 74 33 64;
+  --color-plum-light: 107 51 88;
+  --color-plum-dark: 51 21 48;
+  --color-gold: 198 160 92;
+}
+
+[data-theme="rose-bloom"] {
+  --color-cream: 253 242 245;
+  --color-ivory: 252 228 234;
+  --color-blush: 248 203 217;
+  --color-rose: 224 103 143;
+  --color-lavender: 240 168 192;
+  --color-plum: 107 31 62;
+  --color-plum-light: 140 43 82;
+  --color-plum-dark: 69 19 40;
+  --color-gold: 196 138 94;
+}
+
+[data-theme="purple-dream"] {
+  --color-cream: 248 244 252;
+  --color-ivory: 240 231 249;
+  --color-blush: 226 208 242;
+  --color-rose: 169 123 199;
+  --color-lavender: 185 154 224;
+  --color-plum: 69 44 107;
+  --color-plum-light: 97 64 144;
+  --color-plum-dark: 46 28 72;
+  --color-gold: 169 138 90;
+}
+
+[data-theme="sunset-glow"] {
+  --color-cream: 255 246 240;
+  --color-ivory: 255 233 219;
+  --color-blush: 255 211 188;
+  --color-rose: 242 107 78;
+  --color-lavender: 247 158 133;
+  --color-plum: 122 47 23;
+  --color-plum-light: 156 68 35;
+  --color-plum-dark: 82 30 15;
+  --color-gold: 224 149 74;
+}
+
+[data-theme="ocean-breeze"] {
+  --color-cream: 239 250 252;
+  --color-ivory: 223 243 247;
+  --color-blush: 195 236 242;
+  --color-rose: 46 157 179;
+  --color-lavender: 111 203 222;
+  --color-plum: 11 71 89;
+  --color-plum-light: 20 98 121;
+  --color-plum-dark: 7 48 64;
+  --color-gold: 79 168 201;
+}
+
+[data-theme="mint-garden"] {
+  --color-cream: 241 250 244;
+  --color-ivory: 226 245 233;
+  --color-blush: 201 237 214;
+  --color-rose: 63 168 113;
+  --color-lavender: 127 211 160;
+  --color-plum: 27 92 60;
+  --color-plum-light: 41 125 82;
+  --color-plum-dark: 15 54 35;
+  --color-gold: 127 184 120;
+}
+
+[data-theme="blueberry"] {
+  --color-cream: 242 244 252;
+  --color-ivory: 228 232 248;
+  --color-blush: 204 213 242;
+  --color-rose: 84 104 199;
+  --color-lavender: 128 147 222;
+  --color-plum: 35 47 99;
+  --color-plum-light: 52 66 140;
+  --color-plum-dark: 22 30 66;
+  --color-gold: 107 127 209;
+}
+
+[data-theme="autumn"] {
+  --color-cream: 251 244 236;
+  --color-ivory: 245 229 210;
+  --color-blush: 234 203 163;
+  --color-rose: 179 106 46;
+  --color-lavender: 217 156 92;
+  --color-plum: 74 44 20;
+  --color-plum-light: 107 66 31;
+  --color-plum-dark: 46 26 12;
+  --color-gold: 196 132 42;
+}
+
+[data-theme="midnight"] {
+  --color-cream: 242 241 250;
+  --color-ivory: 229 226 245;
+  --color-blush: 207 201 236;
+  --color-rose: 76 63 158;
+  --color-lavender: 139 127 209;
+  --color-plum: 27 20 64;
+  --color-plum-light: 44 34 96;
+  --color-plum-dark: 16 12 40;
+  --color-gold: 111 99 201;
+}
+
+[data-theme="lavender-bloom"] {
+  --color-cream: 250 246 253;
+  --color-ivory: 242 233 250;
+  --color-blush: 231 214 245;
+  --color-rose: 201 143 214;
+  --color-lavender: 183 158 232;
+  --color-plum: 78 46 122;
+  --color-plum-light: 108 64 152;
+  --color-plum-dark: 51 29 80;
+  --color-gold: 232 168 196;
+}
+
+[data-theme="rose-sunset"] {
+  --color-cream: 255 245 243;
+  --color-ivory: 254 231 224;
+  --color-blush: 251 208 204;
+  --color-rose: 232 93 138;
+  --color-lavender: 244 145 122;
+  --color-plum: 122 31 66;
+  --color-plum-light: 156 46 88;
+  --color-plum-dark: 78 16 41;
+  --color-gold: 240 149 90;
+}
+
+[data-theme="ocean-dream"] {
+  --color-cream: 238 250 251;
+  --color-ivory: 220 243 246;
+  --color-blush: 195 235 240;
+  --color-rose: 58 143 199;
+  --color-lavender: 122 198 214;
+  --color-plum: 14 61 107;
+  --color-plum-light: 23 84 144;
+  --color-plum-dark: 8 37 66;
+  --color-gold: 111 198 192;
+}
+
+[data-theme="meadow-glow"] {
+  --color-cream: 247 251 239;
+  --color-ivory: 234 245 218;
+  --color-blush: 211 236 190;
+  --color-rose: 95 168 90;
+  --color-lavender: 143 203 110;
+  --color-plum: 44 74 30;
+  --color-plum-light: 67 110 44;
+  --color-plum-dark: 26 46 18;
+  --color-gold: 212 194 90;
+}
+
+[data-theme="berry-dream"] {
+  --color-cream: 248 244 253;
+  --color-ivory: 238 227 250;
+  --color-blush: 222 199 242;
+  --color-rose: 155 79 199;
+  --color-lavender: 169 139 224;
+  --color-plum: 58 27 94;
+  --color-plum-light: 83 39 127;
+  --color-plum-dark: 37 17 60;
+  --color-gold: 123 111 224;
+}
